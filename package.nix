@@ -18,6 +18,7 @@
   # dlopen()ed
   dbus,
   libGL,
+  libva,
   vulkan-loader,
   wayland,
   libx11,
@@ -25,6 +26,7 @@
   libxcursor,
   libxi,
   libxkbcommon,
+  libxrender,
   # from default.nix
   app,
   version,
@@ -55,9 +57,10 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
   buildInputs = [ stdenv.cc.cc.lib alsa-lib ];
-  runtimeDependencies = [
+  runtimeDependencies = map lib.getLib [
     dbus
     libGL
+    libva
     vulkan-loader
     wayland
     libx11
@@ -65,7 +68,9 @@ stdenv.mkDerivation {
     libxcursor
     libxi
     libxkbcommon
+    libxrender
   ];
+  appendRunpaths = [ "/run/opengl-driver/lib" ];
 
   dontConfigure = true;
   dontBuild = true;

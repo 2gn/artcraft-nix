@@ -1,8 +1,8 @@
 {
   "mirrors": {
-    "github": "ipeglin/artcraft-nix",
-    "gitlab": "ipeglin/artcraft-nix",
-    "gitlabSources": "ipeglin"
+    "github": "2gn/artcraft-nix",
+    "gitlab": "2gn/artcraft-nix",
+    "gitlabSources": "2gn"
   },
   "apps": {
     "designcraft": {

@@ -9,14 +9,18 @@ import common
 # Every library a binary may name: what it links plus what package.nix puts on
 # its RPATH for dlopen(). A name outside this set means upstream started
 # loading something new, which would only fail at runtime -- so reject it and
-# let a human extend package.nix. "library" is a false positive in LightCraft.
+# let a human extend package.nix. "library" and "librationview" are false
+# positives in LightCraft.
 KNOWN_LIBS = {
     "libc", "libm", "libgcc_s", "libdl", "libpthread", "librt",
-    "libasound", "libdbus-1", "libEGL", "libvulkan",
+    "libasound", "libdbus-1", "libEGL", "libGL", "libvulkan",
     "libwayland-client", "libwayland-egl",
     "libX11", "libX11-xcb", "libxcb", "libXcursor", "libXi",
+    "libXrender",
     "libxkbcommon", "libxkbcommon-x11",
-    "library",
+    "libva", "libva-drm",
+    "libcuda", "libnvcuvid", "libnvidia-encode",
+    "library", "librationview",
 }
 # The last "lib" before ".so": binaries also embed distro package hints that
 # run together (e.g. "libvulkan1vulkan-loaderlibEGL.so.1").
